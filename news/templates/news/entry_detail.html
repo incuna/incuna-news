@@ -1,0 +1,14 @@
+{% extends "news/base.html" %}
+{% load feincms_tags %}
+
+{% block title %}{{ block.super }} {{ object.headline|escape }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.headline }}</h1>
+<p class="date small">{{ object.pub_date|date:"F j, Y" }}</p>
+
+{% for content in object.content.main %}{% feincms_render_content content request %}{% endfor %}
+
+
+{% endblock %}
