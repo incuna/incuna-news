@@ -1,0 +1,9 @@
+{% load feincms_tags %}
+{% for entry in entries %}
+    <div>
+      <h5>{{ entry.headline }}</h5>
+      {% for content in entry.content.summary %}{% feincms_render_content content request %}{% endfor %}
+      <a href="{{ entry.get_absolute_url }}">&gt; Find out more...</a>
+      <br class="clear">
+    </div>
+{% endfor %}

@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from incuna.db.models import *
+from tagging.fields import TagField
 
 from feincms.models import Base
 from feincms.content.medialibrary.models import MediaFileContent
@@ -13,6 +14,7 @@ class Entry(Base):
     pub_date = models.DateTimeField(default=datetime.datetime.now)
     headline = models.CharField(max_length=255)
     slug = AutoSlugField(max_length=255,populate_from="headline",help_text='This will be automatically generated from the name',unique=True,editable=True)
+    tags = TagField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'entries'
