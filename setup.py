@@ -2,6 +2,7 @@ from distutils.core import setup
 setup(
     name = "news",
     packages = ["news", ],
+    include_package_data=True,
     version = "0.1",
     description = "Provides news.",
     author = "Incuna Ltd",
