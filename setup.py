@@ -1,7 +1,8 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
+
 setup(
-    name = "news",
-    packages = ["news", ],
+    name = "incuna-news",
+    packages = find_packages(),
     include_package_data=True,
     version = "0.1",
     description = "Provides news.",
