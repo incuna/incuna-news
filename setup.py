@@ -4,7 +4,7 @@ setup(
     name = "incuna-news",
     packages = find_packages(),
     include_package_data=True,
-    version = "0.1",
+    version = "1.1",
     description = "Provides news.",
     author = "Incuna Ltd",
     author_email = "admin@incuna.com",
