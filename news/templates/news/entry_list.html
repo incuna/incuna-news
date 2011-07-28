@@ -1,0 +1,15 @@
+{% extends "news/base.html" %}
+{% load feincms_tags %}
+
+{% block content %}
+
+<h1>News entries tagged as '{{ tag }}'</h1>
+
+{% for object in object_list %}
+    <h2><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h2>
+    {% for content in object.content.summary %}{% feincms_render_content content request %}{% endfor %}
+
+    <p class="date small">Posted on {{ object.pub_date|date:"F j, Y" }}</p>
+{% endfor %}
+
+{% endblock %}

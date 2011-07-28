@@ -10,10 +10,21 @@ from feincms.content.medialibrary.models import MediaFileContent
 from feincms.content.richtext.models import RichTextContent
 
 
+class NewsCategory(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, help_text='This will be automatically generated from the name', unique=True,)
+
+    class Meta:
+        verbose_name_plural = 'news categories'
+
+    def __unicode__(self):
+        return self.name
+    
 class Entry(Base):
     pub_date = models.DateTimeField(default=datetime.datetime.now)
     headline = models.CharField(max_length=255)
     slug = AutoSlugField(max_length=255,populate_from="headline",help_text='This will be automatically generated from the name',unique=True,editable=True)
+    category = models.ForeignKey(NewsCategory, null=True, blank=True)
     tags = TagField(null=True, blank=True)
 
     class Meta:
